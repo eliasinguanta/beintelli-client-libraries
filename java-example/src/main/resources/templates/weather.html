@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>BeIntelli | Weather</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    <body>
+        <div style="display: flex;justify-content: center; margin-top: 30px;">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Weather</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table container">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Temperature</th>
+                                <th>Humidity</th>
+                                <th>Airpressure</th>
+                                <th>Absolute Precipitation</th>
+                                <th>Differential Precipitation</th>
+                                <th>Precipitation Intensity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="weather: ${weathers}">
+                                <td th:text="${weather.tmpstmpForAdding}"></td>
+                                <td th:text="${#numbers.formatInteger(weather.tempc, 0,'POINT')}"></td>
+                                <td th:text="${#numbers.formatInteger(weather.humidity, 0,'POINT')}"></td>
+                                <td th:text="${#numbers.formatInteger(weather.airPressure, 0,'POINT')}"></td>
+                                <td th:text="${#numbers.formatInteger(weather.absolutePrecipitation, 0,'POINT')}"></td>
+                                <td th:text="${#numbers.formatInteger(weather.differentialPrecipitation, 0,'POINT')}"></td>
+                                <td th:text="${#numbers.formatInteger(weather.precipitationIntensity, 0,'POINT')}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <form th:action="@{/weather}" th:method="post" th:object="${timeFrame}">
+                            <div class="row" style="margin: 10px;">
+                                <label for="startTime" class="col" style="margin: 10px;">Startzeit</label>
+                                <input type="text" id="startTime" th:field="*{startTime}" th:placeholder="*{startTime}" class="col" style="margin: 10px;">
+                                <label for="endTime" class="col"style="margin: 10px;">Endzeit</label>
+                                <input type="text" id="endTime" th:field="*{endTime}" th:placeholder="*{endTime}" class="col" style="margin: 10px;">
+                                <button type="submit" style="margin: 10px;" class="btn btn-primary">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
