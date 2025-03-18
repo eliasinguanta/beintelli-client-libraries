@@ -1,7 +1,7 @@
 # BeIntelli Client Library
 
 ## Description
-!!! warning: The REST API may have changed. The client library may not work with the current API.
+**Warning:**  The REST API may have changed. The client library may not work with the current API.
 
 This java and python client library was created as part of my bachelor's thesis for the BeIntelli platform, a project in the field of autonomous mobility. It serves as an abstraction layer for the REST API with a few additional features. A small example shows how to use the client library.
 
